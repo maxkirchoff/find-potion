@@ -46,12 +46,6 @@ class FormProcessor
                 // Check for existing user
                 if ($this->existing_email_signup($post['user_email']))
                 {
-                    // Check for existin user who is unsubscribed
-                    if ($this->existing_unsubscribed_user($post['user_email']))
-                    {
-                        return 'unsubscribed';
-                    }
-
                     return 'duplicate';
                 }
 
@@ -67,31 +61,6 @@ class FormProcessor
                 return 'error';
             }
         }
-    }
-
-    /**
-     * @param $email
-     * @return bool
-     */
-    private function existing_unsubscribed_user($email)
-    {
-        // Grab DB handle
-        $dbh = $this->get_db_handle();
-
-        // Prepare db statement
-        $stmt = $dbh->prepare("SELECT * FROM signup WHERE user_email = :user_email AND unsubscribed = TRUE");
-
-        // Bind the params to statement
-        $stmt->bindParam(':user_email', $email);
-
-        // Execute!
-        $stmt->execute();
-
-        // Load all results from statement
-        $result = $stmt->fetchAll();
-
-        // Return true if there was any results / false if not
-        return (bool) $result;
     }
 
     /**
