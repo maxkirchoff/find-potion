@@ -20,9 +20,41 @@
 </head>
 <body>
 <div class="container">
-    <div class="span4 offset4">
+    <div class="span10 offset1">
         <div class="row">
-            <div style="text-align:center">
+            <div class="span5" id="signup">
+                <h2>Sign up for Potion&trade;</h2>
+                <form class="form-vertical" id="signUpHere" method='post' action=''>
+                    <fieldset>
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="user_name" name="user_name" placeholder="Your Full Name" data-content="Enter your first and last name." data-original-title="Full Name">
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="text" class="input-xlarge" id="user_email" name="user_email" placeholder="Your Email Address" data-content="What’s your email address?" data-original-title="Email">
+
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <input type="checkbox" class="checkbox" id="notify" name="notify" data-content="I would like to receive updates." data-original-title="Send Me Updates">
+                                I want to get emails about Potion&trade;
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <div class="controls">
+                                <button type="submit" class="btn btn btn-primary btn-large" rel="tooltip" title="first tooltip">Request Account</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
                 <?php
 
                 $src_dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src';
@@ -85,43 +117,27 @@
                         </div>";
                 }
                 ?>
-                <form class="form-vertical" id="signUpHere" method='post' action=''>
-                    <fieldset>
-                        <legend>Sign up for Potion&trade; private beta.</legend>
-                        <div class="control-group">
-                            <div class="controls">
-                                <input type="text" class="input-xlarge" id="user_name" name="user_name" placeholder="Your Full Name" data-content="Enter your first and last name." data-original-title="Full Name">
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="controls">
-                                <input type="text" class="input-xlarge" id="user_email" name="user_email" placeholder="Your Email Address" data-content="What’s your email address?" data-original-title="Email">
-
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="controls">
-                                <input type="checkbox" class="checkbox" id="notify" name="notify" data-content="I would like to receive updates." data-original-title="Send Me Updates">
-                                I would like to get email notifications about Potion&trade;
-                            </div>
-                        </div>
-
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" class="btn btn-success" rel="tooltip" title="first tooltip">Request Account</button>
-                            </div>
-                        </div>
-
-                    </fieldset>
-                </form>
+            </div>
+            <div class="span5" id="whatis">
+                <h2>What is Potion?</h2>
+                <p>
+                    Potion is all about the liquids you love.
+                    <br/>
+                    <br/>
+                    You don't have to dig through hundreds of posts, tweets, emails, and searches just to find out about your perfect IPA or favorite Pinot.
+                    <br/>
+                    <br/>
+                    Follow beers, wine, and other libations to get the info you want and the recommendation you need.
+                    <br/>
+                    <br/>
+                    Follow a single bottle of brew or a specific label of wine.
+                    <br/>It's up to you.
+                    <br/>
+                </p>
             </div>
         </div>
-        <hr>
         <footer>
             <div class="container">
-                <p>&copy; Potion, Inc</p>
             </div>
         </footer>
     </div>

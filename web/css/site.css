@@ -1,3 +1,24 @@
+body {
+    background: url('../img/bg_wood_pattern.png');
+}
+
 .controls > .radio:first-child, .controls > .checkbox:first-child {
     margin-top: -2px;
+}
+
+#whatis, #signup {
+    margin-top: 10px;
+    text-align:center;
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px 0;
+}
+
+#signup form {
+    padding: 0 30px;
+}
+
+#whatis p {
+    text-align: left;
+    padding: 0 30px;
 }
