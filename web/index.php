@@ -23,7 +23,7 @@
     <div class="span10 offset1">
         <div class="row">
             <div class="span5" id="signup">
-                <h2>Sign up for Potion&trade;</h2>
+                <h2>Sign up for <span class="logo">Potion</span>.</h2>
                 <form class="form-vertical" id="signUpHere" method='post' action=''>
                     <fieldset>
                         <div class="control-group">
@@ -42,7 +42,7 @@
                         <div class="control-group">
                             <div class="controls">
                                 <input type="checkbox" class="checkbox" id="notify" name="notify" data-content="I would like to receive updates." data-original-title="Send Me Updates">
-                                I want to get emails about Potion&trade;
+                                I want to get emails about <span class="logo">Potion</span>
                             </div>
                         </div>
 
@@ -71,7 +71,7 @@
                         case 'success':
                             $alert_type = $result;
                             $message = "You did it! We will notify you once you are given beta access.<br/>
-                                    Thanks for finding Potion&trade;";
+                                    Thanks for finding <span class='logo'>Potion</span>";
                             break;
                         case 'duplicate':
                             $alert_type = 'error';
@@ -92,36 +92,12 @@
                             {$message}
                         </div>";
                 }
-                else if (isset($_GET['unsubscribe']))
-                {
-                    require_once($src_dir . DIRECTORY_SEPARATOR . 'form_processor.php');
-                    $form_processor = new FindPotion\FormProcessor();
-
-                    $result = $form_processor->unsubscribe($_GET['unsubscribe']);
-
-                    switch ($result)
-                    {
-                        case 'success':
-                            $alert_type = $result;
-                            $message = "Sorry to see you go, but we have removed you from our list.";
-                            break;
-                        case 'error':
-                        default:
-                            $alert_type = 'error';
-                            $message = "There was an error. Please try again.";
-                            break;
-                    }
-
-                    echo "<div class=\"alert alert-{$alert_type}\">
-                            {$message}
-                        </div>";
-                }
                 ?>
             </div>
             <div class="span5" id="whatis">
-                <h2>What is Potion?</h2>
+                <h2>What is <span class="logo">Potion</span>?</h2>
                 <p>
-                    Potion is all about the liquids you love.
+                    <span class="logo">Potion</span> is all about the liquids you love.
                     <br/>
                     <br/>
                     You don't have to dig through hundreds of posts, tweets, emails, and searches just to find out about your perfect IPA or favorite Pinot.

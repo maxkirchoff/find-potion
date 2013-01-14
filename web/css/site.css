@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 body {
     background: url('../img/bg_wood_pattern.png');
 }
@@ -6,7 +8,7 @@ body {
     margin-top: -2px;
 }
 
-#whatis, #signup {
+#whatis, #signup, #logo-header{
     margin-top: 10px;
     text-align:center;
     background: #fff;
@@ -21,4 +23,17 @@ body {
 #whatis p {
     text-align: left;
     padding: 0 30px;
+}
+
+.logo {
+    color: #3b3c62;
+    font-weight: bold;
+    letter-spacing: -.05em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#logo-header h1 {
+    font-size: 7em;
+    background-size: 100%;
+    padding-right: 15px;
 }
