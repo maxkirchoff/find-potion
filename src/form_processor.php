@@ -2,7 +2,8 @@
 namespace FindPotion;
 
 use PDO,
-    Exception;
+    Exception,
+    FindPotion\Config;
 
 class FormProcessor
 {
@@ -16,7 +17,7 @@ class FormProcessor
      */
     function __construct()
     {
-        $this->conf = $this->get_config();
+        $this->conf = Config::get_config();
     }
 
     /**
@@ -26,7 +27,7 @@ class FormProcessor
      * @return string
      * @throws \Exception
      */
-    function signup(array $post)
+    function sign_up(array $post)
     {
         // Assert that we have our required fields
         if ($this->assert_required_fields($post))
@@ -43,6 +44,9 @@ class FormProcessor
                 // basic sanitization on user name
                 $post['user_name'] = filter_var($post['user_name'], FILTER_SANITIZE_STRING);
 
+                // basic sanitization on notes
+                $post['user_notes'] = filter_var($post['user_notes'], FILTER_SANITIZE_STRING);
+
                 // Check for existing user
                 if ($this->existing_email_signup($post['user_email']))
                 {
@@ -50,9 +54,7 @@ class FormProcessor
                 }
 
                 // Do all the DB saving work
-                $post['user_key'] = $this->save_form_submission($post);
-
-                return 'success';
+                $this->save_form_submission($post);
             }
             catch (Exception $e)
             {
@@ -60,6 +62,8 @@ class FormProcessor
                 error_log("Could not process form submission: " . $e->getMessage());
                 return 'error';
             }
+
+            return 'success';
         }
     }
 
@@ -97,8 +101,8 @@ class FormProcessor
         $dbh = $this->get_db_handle();
 
         // prepare the bestest DB insert statement
-        $stmt = $dbh->prepare("INSERT INTO signup (user_name, user_email, notify, user_key, created)
-                                VALUES (:user_name, :user_email, :notify, :user_key, :created)");
+        $stmt = $dbh->prepare("INSERT INTO signup (user_name, user_email, user_notes, invite_code, notify, created)
+                                VALUES (:user_name, :user_email, :user_notes, :invite_code, :notify, :created)");
 
         // bind all the simple params to the statement
         $stmt->bindParam(':user_name', $post['user_name'], PDO::PARAM_STR, 1000);
@@ -109,66 +113,20 @@ class FormProcessor
         // then bind
         $stmt->bindParam(':notify', $post['notify'], PDO::PARAM_BOOL);
 
+        // bind the user notes
+        $stmt->bindParam(':user_notes', $post['user_notes']);
+
+        // bind the invite code
+        $stmt->bindParam(':invite_code', $post['invite_code'], PDO::PARAM_STR);
+
         // Grab a UTC datetime obj
         $datetime = new \DateTime();
         $datetime->setTimezone(new \DateTimeZone('UTC'));
         // Set created by mysql's datetime format ... bleh
         $stmt->bindParam(':created', $datetime->format('Y-m-d H:i:s'));
 
-        // Get a unique user key
-        $user_key = $this->generate_user_key();
-        // BIND!
-        $stmt->bindParam(':user_key', $user_key);
-
         // DO IT ALL!
         $stmt->execute();
-
-        return $user_key;
-    }
-
-    /**
-     * TODO: This doesn't account for any other user_keys created at the same time...make super ultimate unique
-     * @return string
-     */
-    private function generate_user_key()
-    {
-        // Try a simple uniqid with the most entropies
-        $user_key = uniqid('', true);
-
-        // Check for existence of that uniqid
-        if ($this->existing_user_key($user_key))
-        {
-            // If it already exists, let's try again
-            $this->generate_user_key();
-        }
-
-        //we got something that **should** be unique
-        return $user_key;
-    }
-
-    /**
-     * @param $user_key
-     * @return bool
-     */
-    private function existing_user_key($user_key)
-    {
-        // Grab a DB handle
-        $dbh = $this->get_db_handle();
-
-        // prepare the statement
-        $stmt = $dbh->prepare("SELECT * FROM signup WHERE user_key = :user_key");
-
-        // bind params to the statement
-        $stmt->bindParam(':user_key', $user_key);
-
-        // Execute!
-        $stmt->execute();
-
-        // get any results
-        $result = $stmt->fetchAll();
-
-        // true is we had truthy, false if not.
-        return (bool) $result;
     }
 
     /**
@@ -190,25 +148,6 @@ class FormProcessor
 
         // pass back our db handle
         return $dbh;
-    }
-
-    /**
-     * @return array
-     * @throws \Exception
-     */
-    private function get_config()
-    {
-        // Load the conf str
-        $conf_file = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'conf' . DIRECTORY_SEPARATOR . 'config.ini';
-
-        // Check for conf file's existence
-        if (! file_exists($conf_file))
-        {
-            throw new Exception("Configuration cannot be found.");
-        }
-
-        // parse the conf file
-        return parse_ini_file($conf_file, true);
     }
 
     /**

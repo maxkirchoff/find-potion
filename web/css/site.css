@@ -8,23 +8,34 @@ body {
     margin-top: -2px;
 }
 
-#whatis, #signup, #logo-header{
-    margin-top: 10px;
-    text-align:center;
+.what, #brand, #signup, #logo-header{
+    margin-top: 25px;
     background: #fff;
     border-radius: 15px;
     padding: 15px 0;
+}
+
+.alert {
+    border-radius: 0;
+}
+
+h2, #signup, #brand {
+    text-align:center;
 }
 
 #signup form {
     padding: 0 30px;
 }
 
-#whatis p {
+.what p, .what h4, #signup p {
     text-align: left;
     padding: 0 30px;
 }
 
+.what h4 {
+    margin: 20px 0 5px 0;
+    font-weight: bold;
+}
 .logo {
     color: #3b3c62;
     font-weight: bold;
@@ -36,4 +47,8 @@ body {
     font-size: 7em;
     background-size: 100%;
     padding-right: 15px;
+}
+
+.brand-image {
+
 }
