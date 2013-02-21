@@ -8,7 +8,7 @@ body {
     margin-top: -2px;
 }
 
-.what, #brand, #signup, #logo-header{
+.what, #follow, #brand, #signup, #logo-header{
     margin-top: 25px;
     background: #fff;
     border-radius: 15px;
@@ -19,7 +19,7 @@ body {
     border-radius: 0;
 }
 
-h2, #signup, #brand {
+h2, #signup, #brand, #follow {
     text-align:center;
 }
 
@@ -49,6 +49,13 @@ h2, #signup, #brand {
     padding-right: 15px;
 }
 
-.brand-image {
+.socialIcons {
+    display: inline;
+    margin: 0 5px;
+}
 
+@media (max-width: 480px) {
+    #brand {
+        display: none;
+    }
 }
