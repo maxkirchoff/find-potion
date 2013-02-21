@@ -66,7 +66,7 @@ $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
                             </div>
 
                             <input type="hidden" id="invite_code" name="invite_code" value="<?php echo $invite_code; ?>">
-                            <?php if (isset($_COOKIE['invite_code'])) { ?>
+                            <?php if ($invite_code && !$_POST) { ?>
                                 <div class="alert">The link you followed has an invite code. <br />You get priority! :P</div>
                             <?php } ?>
                             <div class="control-group">
@@ -94,7 +94,7 @@ $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
                             case 'success':
                                 $alert_type = $result;
                                 $message = "You did it! We will notify you once you are given beta access.<br/>
-                                        Thanks for finding <span class='logo'>Potion</span>";
+                                        Thanks for finding <span class='logo'>Potion</span>.";
                                 break;
                             case 'duplicate':
                                 $alert_type = 'error';
