@@ -138,7 +138,7 @@ class FormProcessor
         $conf = $this->conf;
 
         // Load the dsn string
-        $dsn = "mysql:host={$conf['db']['host']};dbname={$conf['db']['name']};charset=UTF-8";
+        $dsn = "mysql:host={$conf['db']['host']};dbname={$conf['db']['name']};";
 
         // instantiate a new PDO
         $dbh = new PDO($dsn, $conf['db']['user'], $conf['db']['password']);

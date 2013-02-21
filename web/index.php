@@ -66,7 +66,9 @@ $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
                             </div>
 
                             <input type="hidden" id="invite_code" name="invite_code" value="<?php echo $invite_code; ?>">
-
+                            <?php if (isset($_COOKIE['invite_code'])) { ?>
+                                <div class="alert">The link you followed has an invite code. <br />You get priority! :P</div>
+                            <?php } ?>
                             <div class="control-group">
                                 <div class="controls">
                                     <button type="submit" class="btn btn btn-primary btn-large" rel="tooltip" title="first tooltip">Sign Up</button>
