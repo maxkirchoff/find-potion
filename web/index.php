@@ -5,11 +5,18 @@ $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Potion App: Libation tracker - Sign Up for Alpha</title>
+    <title>Potion Libation tracker - Sign Up for Alpha</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <meta property="og:title" content="Potion Libation tracker - Sign Up for Alpha"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="http://www.findpotion.com/"/>
+    <meta property="og:image" content="http://www.findpotion.com/img/potion-og.png"/>
+    <meta property="og:description"
+          content="Beer, wine, coffee - Potion is all about the liquids you love.
+          Fulfill your inner snob without the work. Collect spectacular roasts,
+          special IPAs, tasty Pinots and discover new favorites at the tip of your fingers."/>
     <!-- Stylesheets -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.css" rel="stylesheet">
