@@ -11,8 +11,8 @@ $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
     <meta name="author" content="">
     <meta property="og:title" content="Potion Libation tracker - Sign Up for Alpha"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:url" content="http://www.findpotion.com/"/>
-    <meta property="og:image" content="http://www.findpotion.com/img/potion-og.png"/>
+    <meta property="og:url" content="http://findpotion.com/"/>
+    <meta property="og:image" content="http://findpotion.com/img/potion-og.png"/>
     <meta property="og:description"
           content="Beer, wine, coffee - Potion is all about the liquids you love.
           Fulfill your inner snob without the work. Collect spectacular roasts,
