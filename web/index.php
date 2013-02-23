@@ -1,7 +1,5 @@
 <?php
 $invite_code = isset($_COOKIE['invite_code']) ? $_COOKIE['invite_code'] : '';
-?>
-<?php
 
 $src_dir = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src';
 require_once($src_dir . DIRECTORY_SEPARATOR . 'config.php');
@@ -18,7 +16,7 @@ if($_POST && is_array($_POST))
     {
         case 'success':
             $alert_type = $result;
-            $message = "You did it! We will notify you once you are given beta access.<br/>
+            $message = "You did it! We will notify you with further information.<br/>
                                         Thanks for finding <span class='logo'>Potion</span>.";
             break;
         case 'duplicate':
@@ -139,6 +137,12 @@ else
                         </a>
                     </div>
 
+                    <!-- Twitter follow icon -->
+                    <div class="socialIcons">
+                        <a href="https://twitter.com/FindPotion" rel="external">
+                            <img src="img/twitter.png" class="twitterLogo" width=65 height=65 alt="@FindPotion on Twitter"/>
+                        </a>
+                    </div>
                     <!-- Google+ follow icon -->
                     <div class="socialIcons">
                         <a href="https://plus.google.com/101434536275916119513?prsrc=3" rel="external">
