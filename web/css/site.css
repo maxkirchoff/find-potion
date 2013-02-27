@@ -8,7 +8,7 @@ body {
     margin-top: -2px;
 }
 
-.what, #follow, #brand, #signup, #logo-header{
+.what, #contactUs, #follow, #brand, #signup, #logo-header{
     margin-top: 25px;
     background: #fff;
     border-radius: 15px;
@@ -19,7 +19,7 @@ body {
     border-radius: 0;
 }
 
-h2, #signup, #brand, #follow {
+h2, #contactUs, #signup, #brand, #follow {
     text-align:center;
 }
 
@@ -56,6 +56,16 @@ h2, #signup, #brand, #follow {
 
 @media (max-width: 480px) {
     #brand {
+        display: none;
+    }
+
+    .wide {
+        display: none;
+    }
+}
+
+@media (min-width: 480px) {
+    .narrow {
         display: none;
     }
 }

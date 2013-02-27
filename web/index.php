@@ -151,12 +151,20 @@ else
                     </div>
                     <p></p>
                 </div>
+                <?php if (isset($config['contact']['email'])) { ?>
+                <div id="contactUs" class="wide">
+                    <h2>Have a question?</h2>
+                    <p>
+                        Email us at <a href="mailto:<?php echo $config['contact']['email']; ?>"><?php echo $config['contact']['email']; ?></a>
+                    </p>
+                </div>
+                <?php } ?>
             </div>
             <div class="span5">
                 <div id="brand">
                     <img src="img/potion_branding2.png" class="brand-image">
                 </div>
-                <div class="what" id="whatis">
+                <div class="what" id="whatIs">
                     <h2>What is <span class="logo">Potion</span>?</h2>
                     <p>
                         Beer, wine, coffee - <span class="logo">Potion</span> is all about the liquids you love.
@@ -165,7 +173,7 @@ else
                         Fulfill your inner snob without the work. Collect spectacular roasts, special IPAs, tasty Pinots and discover new favorites at the tip of your fingers.
                     </p>
                 </div>
-                <div class="what" id="whatdoes">
+                <div class="what" id="whatDoes">
                     <h2>What does <span class="logo">Potion</span> do?</h2>
                     <h4>Collect</h4>
                     <p>
@@ -185,6 +193,14 @@ else
                     </p>
                 </div>
             </div>
+            <?php if (isset($config['contact']['email'])) { ?>
+            <div id="contactUs" class="narrow">
+                <h2>Have a question?</h2>
+                <p>
+                    Email us at <a href="mailto:<?php echo $config['contact']['email']; ?>"><?php echo $config['contact']['email']; ?></a>
+                </p>
+            </div>
+            <?php } ?>
         </div>
         <footer>
             <div class="container">
